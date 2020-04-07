@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import 'moment-duration-format';
@@ -99,10 +100,12 @@ export default class Moment extends React.Component {
   static startPooledTimer(interval = 60000) {
     Moment.clearPooledTimer();
     Moment.pooledTimer = setInterval(() => {
-      Moment.pooledElements.forEach((element) => {
-        if (element.props.interval !== 0) {
-          element.update();
-        }
+      ReactDOM.unstable_batchedUpdates(() => {
+        Moment.pooledElements.forEach((element) => {
+          if (element.props.interval !== 0) {
+            element.update();
+          }
+        });
       });
     }, interval);
   }

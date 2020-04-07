@@ -22,7 +22,13 @@ module.exports = {
                 commonjs2: 'moment',
                 commonjs: 'moment',
                 amd: 'moment'
-            }
+            },
+            'react-dom': {
+              root: 'react-dom',
+              commonjs2: 'react-dom',
+              commonjs: 'react-dom',
+              amd: 'react-dom'
+          }
         }
     ],
     module: {
